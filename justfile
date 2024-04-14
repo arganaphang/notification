@@ -28,4 +28,4 @@ migrate-create NAME:
 
 # migrate-up -> up migration
 migrate-up:
-	migrate -path ./migrations -database 'postgres://postgres:postgres@localhost:5432/helpdesk?sslmode=disable' up
+	migrate -path ./migrations -database $DATABASE_URL up

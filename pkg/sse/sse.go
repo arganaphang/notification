@@ -15,7 +15,10 @@ func NewSSEConn() *SSEConn {
 
 func (p *SSEConn) AddClient(id string) *chan string {
 	p.mu.Lock()
-	defer p.mu.Unlock()
+
+	defer func() {
+		p.mu.Unlock()
+	}()
 
 	c, ok := p.clients[id]
 	if !ok {
@@ -31,7 +34,10 @@ func (p *SSEConn) AddClient(id string) *chan string {
 
 func (p *SSEConn) RemoveClient(id string, conn chan string) {
 	p.mu.Lock()
-	defer p.mu.Unlock()
+
+	defer func() {
+		p.mu.Unlock()
+	}()
 
 	c, ok := p.clients[id]
 	if !ok {

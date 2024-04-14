@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "github.com/arganaphang/notification/cmd/cli/cmd"
 
 func main() {
-	fmt.Println("Hello World from CLI")
+	cmd.Execute()
 }
